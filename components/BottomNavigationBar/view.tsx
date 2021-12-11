@@ -1,8 +1,8 @@
 import { Box, Flex, Icon, Text } from "@chakra-ui/react";
 import { css } from "@emotion/react";
 import { useRouter } from "next/router";
-import { MdCatchingPokemon, MdOutlineExplore } from "react-icons/md";
-
+import { MdOutlineExplore } from "react-icons/md";
+import { GiPokecog } from "react-icons/gi";
 const BottomNavigationBar = () => {
   let explore = "#929292";
   let captured = "#929292";
@@ -42,7 +42,7 @@ const BottomNavigationBar = () => {
           color: ${explore};
         `}
       >
-        <Icon as={MdOutlineExplore} w={24} h={24} />
+        <Icon as={MdOutlineExplore} w="20px" h="20px" />
         <Text
           css={css`
             margin: 0;
@@ -61,7 +61,7 @@ const BottomNavigationBar = () => {
           color: ${captured};
         `}
       >
-        <Icon as={MdCatchingPokemon} w={24} h={24} />
+        <Icon as={GiPokecog} w="20px" h="20px" />
         <Text
           css={css`
             margin: 0;
