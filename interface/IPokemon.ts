@@ -5,6 +5,7 @@ import { IStat } from "./IStat";
 import { IType } from "./IType";
 
 export interface IPokemon {
+  nickname?: string;
   name?: string;
   id?: number;
   stats?: Array<IStat>;
