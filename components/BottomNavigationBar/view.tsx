@@ -1,4 +1,4 @@
-import { Box, Flex, Icon, Text } from "@chakra-ui/react";
+import { Box, Flex, Icon, Link, Text } from "@chakra-ui/react";
 import { css } from "@emotion/react";
 import { useRouter } from "next/router";
 import { MdOutlineExplore } from "react-icons/md";
@@ -9,6 +9,7 @@ const BottomNavigationBar = () => {
 
   const router = useRouter();
   const currentPath = router.pathname.split("/")[1];
+
   if (currentPath === "") {
     explore = "#EB5457";
     captured = "#929292";
@@ -34,44 +35,50 @@ const BottomNavigationBar = () => {
           rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
       `}
     >
-      <Box
+      <Link
         css={css`
           text-align: center;
           flex: 1;
           padding: 0 8px;
           color: ${explore};
         `}
+        href="/"
       >
-        <Icon as={MdOutlineExplore} w="20px" h="20px" />
-        <Text
-          css={css`
-            margin: 0;
-            font-weight: 600;
-            font-size: 16px;
-          `}
-        >
-          Explore
-        </Text>
-      </Box>
-      <Box
+        <Box>
+          <Icon as={MdOutlineExplore} w="20px" h="20px" />
+          <Text
+            css={css`
+              margin: 0;
+              font-weight: 600;
+              font-size: 16px;
+            `}
+          >
+            Explore
+          </Text>
+        </Box>
+      </Link>
+      <Link
         css={css`
           text-align: center;
           flex: 1;
           padding: 0 8px;
           color: ${captured};
         `}
+        href="/captured"
       >
-        <Icon as={GiPokecog} w="20px" h="20px" />
-        <Text
-          css={css`
-            margin: 0;
-            font-weight: 600;
-            font-size: 16px;
-          `}
-        >
-          Captured
-        </Text>
-      </Box>
+        <Box>
+          <Icon as={GiPokecog} w="20px" h="20px" />
+          <Text
+            css={css`
+              margin: 0;
+              font-weight: 600;
+              font-size: 16px;
+            `}
+          >
+            Captured
+          </Text>
+        </Box>
+      </Link>
     </Flex>
   );
 };

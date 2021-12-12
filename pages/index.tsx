@@ -1,8 +1,8 @@
-import { Box, Button, Flex, SimpleGrid, Text } from "@chakra-ui/react";
+import { Box, Link, Flex, SimpleGrid, Text } from "@chakra-ui/react";
 import { useState } from "react";
 import Image from "next/image";
 import { css } from "@emotion/react";
-import Link from "next/link";
+
 const dummy = [
   {
     name: "Damar",
