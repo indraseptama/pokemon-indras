@@ -96,12 +96,15 @@ export default function Home() {
   return (
     <Box
       css={css`
-        padding: 16px 24px;
+        padding: 16px 32px;
         margin-bottom: 100px;
+        @media (min-width: 420px) {
+          padding: 16px 80px;
+        }
       `}
     >
       <SimpleGrid
-        minChildWidth="88px"
+        minChildWidth={{ base: "88px", sm: "120px", md: "150px" }}
         spacing="16px"
         css={css`
           margin-bottom: 16px;
