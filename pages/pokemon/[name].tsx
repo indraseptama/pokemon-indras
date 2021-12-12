@@ -63,20 +63,44 @@ const PokemonDetail = () => {
         background-color: #14a06f;
       `}
     >
-      <Modal isOpen={isOpen} onClose={onCatchModalClose}>
+      <Modal
+        isCentered
+        closeOnEsc={false}
+        closeOnOverlayClick={false}
+        isOpen={isOpen}
+        onClose={onCatchModalClose}
+        motionPreset="slideInBottom"
+      >
         <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Create your account</ModalHeader>
-          <ModalCloseButton />
+        <ModalContent width={{ base: "90vw" }}>
+          <ModalHeader>You successfuly catch the pokemon!</ModalHeader>
+
           <ModalBody pb={6}>
+            <Box
+              css={css`
+                width: 80%;
+                margin-right: auto;
+                margin-left: auto;
+                position: relative;
+              `}
+            >
+              <Image
+                src={dataDummy.sprites.front_default}
+                layout="responsive"
+                height={1}
+                width={1}
+              />
+            </Box>
             <FormControl>
-              <FormLabel>First name</FormLabel>
+              <FormLabel>
+                Please enter a nickname for your {dataDummy.name}
+              </FormLabel>
               <Input
                 value={newPokemonName}
                 onChange={(e) => {
                   setNewPokemonName(e.target.value);
                 }}
-                placeholder="First name"
+                placeholder={dataDummy.name}
               />
             </FormControl>
           </ModalBody>
@@ -85,7 +109,6 @@ const PokemonDetail = () => {
             <Button colorScheme="blue" mr={3}>
               Save
             </Button>
-            <Button onClick={onCatchModalClose}>Cancel</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
