@@ -55,6 +55,7 @@ const NavigationBar = () => {
         `}
       >
         <Image
+          alt="Pokemon Logo"
           src={"/pokemon-logo.png"}
           height={"50px"}
           width={"100px"}

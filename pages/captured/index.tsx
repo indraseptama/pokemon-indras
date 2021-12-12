@@ -135,6 +135,7 @@ const Captured = () => {
                   `}
                 >
                   <Image
+                    alt="Pokemon Image"
                     src={item.sprites.front_default}
                     objectFit="cover"
                     layout="responsive"

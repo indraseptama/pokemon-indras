@@ -90,6 +90,7 @@ const PokemonDetail = () => {
               `}
             >
               <Image
+                alt="Pokemon Image"
                 src={dataDummy.sprites.front_default}
                 layout="responsive"
                 height={1}
@@ -202,6 +203,7 @@ const PokemonDetail = () => {
             >
               {dataDummy.types.map((item) => (
                 <Box
+                  key={item.type.id}
                   css={css`
                     background-color: black;
                     color: white;
@@ -235,6 +237,7 @@ const PokemonDetail = () => {
           `}
         >
           <Image
+            alt="Pokemon Image"
             src={dataDummy.sprites.front_default}
             objectFit="contain"
             layout="fixed"
@@ -264,6 +267,7 @@ const PokemonDetail = () => {
           </Text>
           {dataDummy.stats.map((item) => (
             <Box
+              key={item.stat.id}
               css={css`
                 display: flex;
                 margin-bottom: 8px;
@@ -325,6 +329,7 @@ const PokemonDetail = () => {
           <Wrap>
             {dataDummy.abilities.map((item) => (
               <Text
+                key={`ability${item.ability.id}`}
                 css={css`
                   border-radius: 16px;
                   padding: 4px 16px 4px 16px;
@@ -349,6 +354,7 @@ const PokemonDetail = () => {
           <Wrap>
             {dataDummy.moves.map((item) => (
               <Text
+                key={`moves${item.move.id}`}
                 css={css`
                   border-radius: 16px;
                   padding: 4px 16px 4px 16px;

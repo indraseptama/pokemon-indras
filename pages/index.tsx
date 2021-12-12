@@ -114,6 +114,7 @@ export default function Home() {
       >
         {pokemons.map((item, index) => (
           <Link
+            key={item.name + index.toString()}
             css={css`
               &:hover {
                 text-decoration: none;
@@ -131,6 +132,7 @@ export default function Home() {
               `}
             >
               <Image
+                alt="Pokemon Image"
                 src={item.image}
                 objectFit="cover"
                 layout="responsive"
