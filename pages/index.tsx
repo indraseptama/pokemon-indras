@@ -98,7 +98,7 @@ export default function Home() {
       css={css`
         padding: 16px 32px;
         margin-bottom: 100px;
-        @media (min-width: 420px) {
+        @media (min-width: 960px) {
           padding: 16px 80px;
         }
       `}

@@ -20,10 +20,9 @@ import {
 import { css } from "@emotion/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { IPokemon } from "../../interface/IPokemon";
 import { dataDummyPokemon } from "../../utils/dataDummy";
 import { MdCatchingPokemon } from "react-icons/md";
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 const PokemonDetail = () => {
   const dataDummy = dataDummyPokemon;
@@ -61,6 +60,11 @@ const PokemonDetail = () => {
         position: relative;
         margin-bottom: 100px;
         background-color: #14a06f;
+        @media (min-width: 960px) {
+          flex-direction: row;
+          margin-bottom: 0px;
+          background-color: transparent;
+        }
       `}
     >
       <Modal
@@ -120,6 +124,10 @@ const PokemonDetail = () => {
           bottom: 90px;
           z-index: 100;
           justify-content: center;
+          cursor: pointer;
+          @media (min-width: 960px) {
+            bottom: 40px;
+          }
         `}
       >
         <Box
@@ -160,6 +168,12 @@ const PokemonDetail = () => {
           display: flex;
           flex-direction: column;
           position: relative;
+          @media (min-width: 960px) {
+            margin: 32px;
+            border-radius: 16px;
+            background-color: #14a06f;
+            align-self: flex-start;
+          }
         `}
       >
         <Box
@@ -232,6 +246,10 @@ const PokemonDetail = () => {
             padding: 16px;
             border-radius: 16px 16px 0 0;
             background-color: white;
+            @media (min-width: 960px) {
+              margin: 16px 16px 16px 16px;
+              border-radius: 16px;
+            }
           `}
         >
           <Text
@@ -280,9 +298,13 @@ const PokemonDetail = () => {
       <Box
         css={css`
           display: flex;
+          flex: 1;
           flex-direction: column;
           padding: 16px;
           background-color: white;
+          @media (min-width: 960px) {
+            padding: 32px;
+          }
         `}
       >
         <Box
