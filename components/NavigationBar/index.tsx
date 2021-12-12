@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 
 const DynamicComponent = dynamic(
-  () => import(/* webpackChunkName: "BottomNavigationBar" */ "./view")
+  () => import(/* webpackChunkName: "NavigationBar" */ "./view")
 );
 
 export default DynamicComponent;

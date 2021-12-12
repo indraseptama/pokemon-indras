@@ -62,6 +62,7 @@ const PokemonDetail = () => {
         background-color: #14a06f;
         @media (min-width: 960px) {
           flex-direction: row;
+          margin-top: 100px;
           margin-bottom: 0px;
           background-color: transparent;
         }

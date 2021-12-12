@@ -1,12 +1,11 @@
-import { useEffect } from "react";
-import BottomNavigationBar from "../components/BottomNavigationBar";
 import "../styles/globals.css";
 import { ChakraProvider } from "@chakra-ui/react";
+import NavigationBar from "../components/NavigationBar";
 function MyApp({ Component, pageProps }) {
   return (
     <ChakraProvider>
       <Component {...pageProps} />
-      <BottomNavigationBar {...pageProps} />
+      <NavigationBar {...pageProps} />
     </ChakraProvider>
   );
 }

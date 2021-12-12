@@ -100,6 +100,8 @@ export default function Home() {
         margin-bottom: 100px;
         @media (min-width: 960px) {
           padding: 16px 80px;
+          margin-top: 100px;
+          margin-bottom: 0;
         }
       `}
     >
@@ -111,7 +113,14 @@ export default function Home() {
         `}
       >
         {pokemons.map((item, index) => (
-          <Link href={`/pokemon/${item.name}`}>
+          <Link
+            css={css`
+              &:hover {
+                text-decoration: none;
+              }
+            `}
+            href={`/pokemon/${item.name}`}
+          >
             <Box
               key={item.image + index}
               css={css`

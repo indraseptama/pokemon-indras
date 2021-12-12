@@ -43,6 +43,7 @@ const dummy: Array<IPokemon> = [
     },
   },
 ];
+
 const Captured = () => {
   const [pokemons, setPokemons] = useState(dummy);
   const [selectedPokemon, setSelectedPokemon] = useState("");
@@ -52,6 +53,11 @@ const Captured = () => {
       css={css`
         padding: 16px 24px;
         margin-bottom: 100px;
+        @media (min-width: 960px) {
+          padding: 16px 80px;
+          margin-top: 100px;
+          margin-bottom: 0;
+        }
       `}
     >
       <Modal
@@ -107,6 +113,9 @@ const Captured = () => {
             <Link
               css={css`
                 width: 100%;
+                &:hover {
+                  text-decoration: none;
+                }
               `}
               href={`/pokemon/${item.name}`}
             >
