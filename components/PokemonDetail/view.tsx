@@ -1,20 +1,39 @@
-import { Box, Progress, Text, useDisclosure, Wrap } from "@chakra-ui/react";
+import {
+  Box,
+  Progress,
+  Spinner,
+  Text,
+  useDisclosure,
+  Wrap,
+} from "@chakra-ui/react";
 import { css } from "@emotion/react";
 import Image from "next/image";
-import { dataDummyPokemon } from "../../utils/dataDummy";
-import { useState } from "react";
+import { GET_POKEMON_DETAIL } from "../../graphql/pokemon-query";
+import { useEffect, useState } from "react";
 import ButtonCatchPokemeon from "../ButtonCatchPokemon/view";
 import ModalCatchPokemeon from "../ModalCatchPokemon/view";
 import { IPokemon } from "../../interface/IPokemon";
+import { useQuery } from "@apollo/client";
+import { dataDummyPokemon } from "../../utils/dataDummy";
 
 interface IPokemonDetailProps {
   name: string;
 }
 
 const PokemonDetail = ({ name }: IPokemonDetailProps) => {
-  const dataDummy = dataDummyPokemon;
+  const [pokemon, setPokemon] = useState<IPokemon>();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isCatchSuccess, setIsCatchSucces] = useState(false);
+  const { data, loading, error } = useQuery(GET_POKEMON_DETAIL, {
+    variables: { name: name },
+  });
+
+  useEffect(() => {
+    if (data && data.pokemon) {
+      setPokemon(data.pokemon);
+    }
+  }, [data]);
+
   const getColor = (baseStat: number) => {
     if (baseStat >= 0 && baseStat <= 50) return "red";
     else if (baseStat > 50 && baseStat <= 75) return "yellow";
@@ -36,9 +55,18 @@ const PokemonDetail = ({ name }: IPokemonDetailProps) => {
   };
 
   const onSavePokemon = (name: string) => {
-    const newPokemon: IPokemon = { ...dataDummy, nickname: name };
+    const newPokemon: IPokemon = { ...pokemon, nickname: name };
     onClose();
   };
+
+  if (loading || pokemon === undefined) {
+    return <Spinner />;
+  }
+
+  if (error) {
+    console.error(error);
+    return null;
+  }
 
   return (
     <Box
@@ -60,7 +88,7 @@ const PokemonDetail = ({ name }: IPokemonDetailProps) => {
         isOpen={isOpen}
         onCatchModalClose={onCatchModalClose}
         isCatchSuccess={isCatchSuccess}
-        pokemon={dataDummy}
+        pokemon={pokemon}
         onSaveButton={onSavePokemon}
       />
 
@@ -110,14 +138,14 @@ const PokemonDetail = ({ name }: IPokemonDetailProps) => {
                 margin: 0 0 8px 0;
               `}
             >
-              {dataDummy.name}
+              {pokemon.name}
             </Text>
             <Box
               css={css`
                 display: flex;
               `}
             >
-              {dataDummy.types.map((item) => (
+              {pokemon.types.map((item) => (
                 <Box
                   key={item.type.id}
                   css={css`
@@ -142,7 +170,7 @@ const PokemonDetail = ({ name }: IPokemonDetailProps) => {
               color: white;
             `}
           >
-            #{dataDummy.id}
+            #{pokemon.id}
           </Text>
         </Box>
         <Box
@@ -154,7 +182,7 @@ const PokemonDetail = ({ name }: IPokemonDetailProps) => {
         >
           <Image
             alt="Pokemon Image"
-            src={dataDummy.sprites.front_default}
+            src={pokemon.sprites.front_default}
             objectFit="contain"
             layout="fixed"
             height="250px"
@@ -181,7 +209,7 @@ const PokemonDetail = ({ name }: IPokemonDetailProps) => {
           >
             Skills
           </Text>
-          {dataDummy.stats.map((item) => (
+          {pokemon.stats.map((item) => (
             <Box
               key={item.stat.id}
               css={css`
@@ -243,7 +271,7 @@ const PokemonDetail = ({ name }: IPokemonDetailProps) => {
             Abilities
           </Text>
           <Wrap>
-            {dataDummy.abilities.map((item) => (
+            {pokemon.abilities.map((item) => (
               <Text
                 key={`ability${item.ability.id}`}
                 css={css`
@@ -268,7 +296,7 @@ const PokemonDetail = ({ name }: IPokemonDetailProps) => {
             Moves
           </Text>
           <Wrap>
-            {dataDummy.moves.map((item) => (
+            {pokemon.moves.map((item) => (
               <Text
                 key={`moves${item.move.id}`}
                 css={css`

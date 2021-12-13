@@ -1,68 +1,41 @@
-import { Box, Flex, SimpleGrid, Text } from "@chakra-ui/react";
-import { useState } from "react";
+import {
+  Box,
+  Flex,
+  SimpleGrid,
+  Spinner,
+  Text,
+  useToast,
+} from "@chakra-ui/react";
+import { useEffect, useState } from "react";
 import { css } from "@emotion/react";
 import PokemonListItem from "../PokemonListItem";
 import { IPokemonItem } from "../../interface/IPokemonItem";
-
-const dummy: Array<IPokemonItem> = [
-  {
-    id: 1,
-    name: "Damar",
-    image:
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png",
-  },
-  {
-    id: 2,
-    name: "Damar",
-    image:
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png",
-  },
-  {
-    id: 3,
-    name: "Damar",
-    image:
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png",
-  },
-  {
-    id: 4,
-    name: "Damar",
-    image:
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png",
-  },
-  {
-    id: 5,
-    name: "Damar",
-    image:
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png",
-  },
-  {
-    id: 6,
-    name: "Damar",
-    image:
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png",
-  },
-  {
-    id: 7,
-    name: "Damar",
-    image:
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png",
-  },
-  {
-    id: 8,
-    name: "Damar",
-    image:
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png",
-  },
-  {
-    id: 9,
-    name: "Damar",
-    image:
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png",
-  },
-];
+import { useQuery } from "@apollo/client";
+import { GET_POKEMONS } from "../../graphql/pokemon-query";
 
 const PokemonList = () => {
-  const [pokemons, setPokemons] = useState(dummy);
+  const limit = 24;
+  const [pokemons, setPokemons] = useState<Array<IPokemonItem>>([]);
+  const [skip, setSkip] = useState(0);
+  const toast = useToast();
+  const { data, loading, error } = useQuery(GET_POKEMONS, {
+    variables: { limit: limit, offset: skip },
+  });
+
+  useEffect(() => {
+    if (data && data.pokemons && data.pokemons.results) {
+      setPokemons([...pokemons, ...data.pokemons.results]);
+    }
+  }, [data]);
+
+  if (error) {
+    toast({
+      title: `fetching error`,
+      status: "error",
+      isClosable: true,
+    });
+  }
+
   return (
     <Box
       css={css`
@@ -91,21 +64,25 @@ const PokemonList = () => {
           justify-content: center;
         `}
       >
-        <Text
-          onClick={() => {
-            setPokemons([...pokemons, ...dummy]);
-          }}
-          css={css`
-            background-color: #eb5457;
-            color: white;
-            border-radius: 8px;
-            padding: 8px 32px;
-            cursor: pointer;
-            font-size: 16px;
-          `}
-        >
-          Load More
-        </Text>
+        {loading ? (
+          <Spinner />
+        ) : (
+          <Text
+            onClick={() => {
+              setSkip(skip + limit);
+            }}
+            css={css`
+              background-color: #eb5457;
+              color: white;
+              border-radius: 8px;
+              padding: 8px 32px;
+              cursor: pointer;
+              font-size: 16px;
+            `}
+          >
+            Load More
+          </Text>
+        )}
       </Flex>
     </Box>
   );
