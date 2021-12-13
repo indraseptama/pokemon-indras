@@ -108,6 +108,7 @@ const MyPokemonList = () => {
       >
         {pokemons.map((item) => (
           <MyPokemonListItem
+            key={item.name + item.nickname}
             pokemon={item}
             setSelectedPokemon={setSelectedPokemon}
             onOpen={onOpen}

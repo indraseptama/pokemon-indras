@@ -3,10 +3,9 @@ import { css } from "@emotion/react";
 import Image from "next/image";
 import { IPokemonItem } from "../../interface/IPokemonItem";
 
-const PokemonListItem = ({ name, image, id }: IPokemonItem) => {
+const PokemonListItem = ({ name, image }: IPokemonItem) => {
   return (
     <Link
-      key={`pokemon-item-${name + id.toString()}`}
       css={css`
         &:hover {
           text-decoration: none;

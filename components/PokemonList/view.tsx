@@ -17,7 +17,6 @@ import { PokemonContext } from "../../context/PokemonContext";
 const PokemonList = () => {
   const limit = 24;
   const { countPokemons } = useContext(PokemonContext);
-  console.log(countPokemons);
   const [pokemons, setPokemons] = useState<Array<IPokemonItem>>([]);
   const [skip, setSkip] = useState(0);
   const toast = useToast();
@@ -27,7 +26,7 @@ const PokemonList = () => {
 
   useEffect(() => {
     if (data && data.pokemons && data.pokemons.results) {
-      setPokemons([...pokemons, ...data.pokemons.results]);
+      setPokemons((prevItems) => [...prevItems, ...data.pokemons.results]);
     }
   }, [data]);
 
@@ -60,7 +59,7 @@ const PokemonList = () => {
         `}
       >
         {pokemons.map((item) => (
-          <PokemonListItem {...item} />
+          <PokemonListItem key={item.name} {...item} />
         ))}
       </SimpleGrid>
       <Flex
