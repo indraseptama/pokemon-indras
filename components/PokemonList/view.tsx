@@ -6,15 +6,18 @@ import {
   Text,
   useToast,
 } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { css } from "@emotion/react";
 import PokemonListItem from "../PokemonListItem";
 import { IPokemonItem } from "../../interface/IPokemonItem";
 import { useQuery } from "@apollo/client";
 import { GET_POKEMONS } from "../../graphql/pokemon-query";
+import { PokemonContext } from "../../context/PokemonContext";
 
 const PokemonList = () => {
   const limit = 24;
+  const { countPokemons } = useContext(PokemonContext);
+  console.log(countPokemons);
   const [pokemons, setPokemons] = useState<Array<IPokemonItem>>([]);
   const [skip, setSkip] = useState(0);
   const toast = useToast();
@@ -48,6 +51,7 @@ const PokemonList = () => {
         }
       `}
     >
+      <Text>You have {countPokemons} pokemon</Text>
       <SimpleGrid
         minChildWidth={{ base: "88px", sm: "120px", md: "150px" }}
         spacing="16px"

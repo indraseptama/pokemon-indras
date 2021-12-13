@@ -4,17 +4,18 @@ import {
   Spinner,
   Text,
   useDisclosure,
+  useToast,
   Wrap,
 } from "@chakra-ui/react";
 import { css } from "@emotion/react";
 import Image from "next/image";
 import { GET_POKEMON_DETAIL } from "../../graphql/pokemon-query";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import ButtonCatchPokemeon from "../ButtonCatchPokemon/view";
 import ModalCatchPokemeon from "../ModalCatchPokemon/view";
 import { IPokemon } from "../../interface/IPokemon";
 import { useQuery } from "@apollo/client";
-import { dataDummyPokemon } from "../../utils/dataDummy";
+import { PokemonContext } from "../../context/PokemonContext";
 
 interface IPokemonDetailProps {
   name: string;
@@ -24,6 +25,8 @@ const PokemonDetail = ({ name }: IPokemonDetailProps) => {
   const [pokemon, setPokemon] = useState<IPokemon>();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isCatchSuccess, setIsCatchSucces] = useState(false);
+  const toast = useToast();
+  const { addPokemon } = useContext(PokemonContext);
   const { data, loading, error } = useQuery(GET_POKEMON_DETAIL, {
     variables: { name: name },
   });
@@ -56,7 +59,15 @@ const PokemonDetail = ({ name }: IPokemonDetailProps) => {
 
   const onSavePokemon = (name: string) => {
     const newPokemon: IPokemon = { ...pokemon, nickname: name };
-    onClose();
+    if (addPokemon(newPokemon)) {
+      onClose();
+    } else {
+      toast({
+        title: `Nickname already exist!`,
+        status: "error",
+        isClosable: true,
+      });
+    }
   };
 
   if (loading || pokemon === undefined) {

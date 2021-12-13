@@ -2,19 +2,28 @@ import "../styles/globals.css";
 import { ChakraProvider } from "@chakra-ui/react";
 import NavigationBar from "../components/NavigationBar";
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
-function MyApp({ Component, pageProps }) {
+import { PokemonProvider } from "../context/PokemonContext";
+import App, { AppContext, AppProps } from "next/app";
+function MyApp({ Component, pageProps }: AppProps) {
   const client = new ApolloClient({
     uri: "https://graphql-pokeapi.vercel.app/api/graphql",
     cache: new InMemoryCache(),
   });
   return (
     <ApolloProvider client={client}>
-      <ChakraProvider>
-        <Component {...pageProps} />
-        <NavigationBar {...pageProps} />
-      </ChakraProvider>
+      <PokemonProvider>
+        <ChakraProvider>
+          <Component {...pageProps} />
+          <NavigationBar {...pageProps} />
+        </ChakraProvider>
+      </PokemonProvider>
     </ApolloProvider>
   );
 }
+MyApp.getInitialProps = async (appContext: AppContext) => {
+  // calls page's `getInitialProps` and fills `appProps.pageProps`
+  const appProps = await App.getInitialProps(appContext);
 
+  return { ...appProps };
+};
 export default MyApp;

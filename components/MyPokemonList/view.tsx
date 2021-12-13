@@ -13,7 +13,8 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { css } from "@emotion/react";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { PokemonContext } from "../../context/PokemonContext";
 import { IPokemon } from "../../interface/IPokemon";
 import MyPokemonListItem from "../MyPokemonListItem/view";
 const dummy: Array<IPokemon> = [
@@ -41,9 +42,14 @@ const dummy: Array<IPokemon> = [
 ];
 
 const MyPokemonList = () => {
-  const [pokemons, setPokemons] = useState(dummy);
+  const { myPokemons, removePokemon } = useContext(PokemonContext);
+  const [pokemons, setPokemons] = useState<Array<IPokemon>>(myPokemons);
   const [selectedPokemon, setSelectedPokemon] = useState("");
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  useEffect(() => {
+    setPokemons(myPokemons);
+  }, [myPokemons]);
   return (
     <Box
       css={css`
@@ -72,7 +78,14 @@ const MyPokemonList = () => {
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme="red" mr={3}>
+            <Button
+              onClick={() => {
+                removePokemon(selectedPokemon);
+                onClose();
+              }}
+              colorScheme="red"
+              mr={3}
+            >
               Remove
             </Button>
             <Button
