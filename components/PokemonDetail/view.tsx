@@ -32,6 +32,14 @@ const PokemonDetail = ({ name }: IPokemonDetailProps) => {
     variables: { name: name },
   });
 
+  const centerScreen = css`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+  `;
+
   useEffect(() => {
     if (data && data.pokemon) {
       setPokemon(data.pokemon);
@@ -78,12 +86,15 @@ const PokemonDetail = ({ name }: IPokemonDetailProps) => {
   };
 
   if (loading || pokemon === undefined) {
-    return <Spinner />;
+    return (
+      <Box css={centerScreen}>
+        <Spinner />
+      </Box>
+    );
   }
 
-  if (error) {
-    console.error(error);
-    return null;
+  if (error || pokemon.name === null) {
+    return <Box css={centerScreen}>Pokemon not found :(</Box>;
   }
 
   return (
