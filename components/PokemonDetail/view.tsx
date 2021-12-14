@@ -16,6 +16,7 @@ import ModalCatchPokemeon from "../ModalCatchPokemon/view";
 import { IPokemon } from "../../interface/IPokemon";
 import { useQuery } from "@apollo/client";
 import { PokemonContext } from "../../context/PokemonContext";
+import { COLOR_TYPES } from "../../utils/colorTypes";
 
 interface IPokemonDetailProps {
   name: string;
@@ -59,7 +60,13 @@ const PokemonDetail = ({ name }: IPokemonDetailProps) => {
 
   const onSavePokemon = (name: string) => {
     const newPokemon: IPokemon = { ...pokemon, nickname: name };
-    if (addPokemon(newPokemon)) {
+    if (name === "" || name === undefined) {
+      toast({
+        title: `Nickname cannot be empty!`,
+        status: "error",
+        isClosable: true,
+      });
+    } else if (addPokemon(newPokemon)) {
       onClose();
     } else {
       toast({
@@ -86,7 +93,7 @@ const PokemonDetail = ({ name }: IPokemonDetailProps) => {
         flex-direction: column;
         position: relative;
         margin-bottom: 100px;
-        background-color: #14a06f;
+        background-color: ${COLOR_TYPES[pokemon.types[0].type.name].background};
         @media (min-width: 960px) {
           flex-direction: row;
           margin-top: 100px;
@@ -121,14 +128,15 @@ const PokemonDetail = ({ name }: IPokemonDetailProps) => {
       </Box>
       <Box
         css={css`
-          flex: 1;
+          flex: 2;
           display: flex;
           flex-direction: column;
           position: relative;
           @media (min-width: 960px) {
             margin: 32px;
             border-radius: 16px;
-            background-color: #14a06f;
+            background-color: ${COLOR_TYPES[pokemon.types[0].type.name]
+              .background};
             align-self: flex-start;
           }
         `}
@@ -137,16 +145,16 @@ const PokemonDetail = ({ name }: IPokemonDetailProps) => {
           css={css`
             display: flex;
             align-items: center;
-            padding: 32px 16px 0 16px;
+            padding: 16px 16px 0 16px;
           `}
         >
           <Box>
             <Text
               css={css`
-                font-size: 40px;
+                font-size: 32px;
                 font-weight: 700;
-                color: white;
-                margin: 0 0 8px 0;
+                color: ${COLOR_TYPES[pokemon.types[0].type.name].foreground};
+                margin: 0 0 0 0;
               `}
             >
               {pokemon.name}
@@ -178,7 +186,7 @@ const PokemonDetail = ({ name }: IPokemonDetailProps) => {
               margin: 0 0 0 auto;
               font-size: 24px;
               font-weight: 700;
-              color: white;
+              color: ${COLOR_TYPES[pokemon.types[0].type.name].foreground};
             `}
           >
             #{pokemon.id}
@@ -206,7 +214,8 @@ const PokemonDetail = ({ name }: IPokemonDetailProps) => {
             border-radius: 16px 16px 0 0;
             background-color: white;
             @media (min-width: 960px) {
-              margin: 16px 16px 16px 16px;
+              margin: 0px 16px 16px 16px;
+              padding: 8px 16px 16px 16px;
               border-radius: 16px;
             }
           `}
@@ -259,7 +268,7 @@ const PokemonDetail = ({ name }: IPokemonDetailProps) => {
       <Box
         css={css`
           display: flex;
-          flex: 1;
+          flex: 3;
           flex-direction: column;
           padding: 16px;
           background-color: white;

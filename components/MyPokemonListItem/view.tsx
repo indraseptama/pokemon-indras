@@ -20,6 +20,7 @@ const MyPokemonListItem = ({
       css={css`
         display: flex;
         flex-direction: column;
+        max-width: 350px;
         position: relative;
         align-items: center;
         border-radius: 8px;
@@ -47,7 +48,7 @@ const MyPokemonListItem = ({
         >
           <Box
             css={css`
-              width: 100%;
+              width: 90%;
               position: relative;
             `}
           >
@@ -68,11 +69,22 @@ const MyPokemonListItem = ({
               padding-right: 4px;
               padding-left: 4px;
               font-weight: 700;
+              font-size: 20px;
+            `}
+          >
+            {pokemon.nickname}
+          </Text>
+          <Text
+            css={css`
+              margin: 0;
+              text-align: center;
+              padding-right: 4px;
+              padding-left: 4px;
               font-size: 14px;
               padding-bottom: 16px;
             `}
           >
-            {pokemon.nickname}
+            {pokemon.name}
           </Text>
         </Box>
       </Link>

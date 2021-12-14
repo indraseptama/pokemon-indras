@@ -37,7 +37,7 @@ const PokemonListItem = ({ name, image }: IPokemonItem) => {
             padding-left: 4px;
             font-weight: 700;
             font-size: 14px;
-            padding-bottom: 8px;
+            padding-bottom: 16px;
           `}
         >
           {name}
