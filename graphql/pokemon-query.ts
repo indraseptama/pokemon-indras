@@ -32,8 +32,6 @@ export const GET_POKEMON_DETAIL = gql`
         }
       }
       abilities {
-        is_hidden
-        slot
         ability {
           name
         }

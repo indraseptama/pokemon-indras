@@ -5,7 +5,7 @@ export const dataDummyPokemon: IPokemon = {
   id: 2,
   stats: [
     {
-      base_stat: 49,
+      base_stat: 60,
       stat: {
         name: "hp",
       },
@@ -69,7 +69,6 @@ export const dataDummyPokemon: IPokemon = {
       },
     },
   ],
-
   moves: [
     {
       move: {

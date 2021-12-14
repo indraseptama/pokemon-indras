@@ -177,7 +177,7 @@ const PokemonDetail = ({ name }: IPokemonDetailProps) => {
             >
               {pokemon.types.map((item) => (
                 <Box
-                  key={item.type.id}
+                  key={item.type.name}
                   css={css`
                     background-color: black;
                     color: white;
@@ -242,7 +242,7 @@ const PokemonDetail = ({ name }: IPokemonDetailProps) => {
           </Text>
           {pokemon.stats.map((item) => (
             <Box
-              key={item.stat.id}
+              key={item.stat.name}
               css={css`
                 display: flex;
                 margin-bottom: 8px;
@@ -305,7 +305,7 @@ const PokemonDetail = ({ name }: IPokemonDetailProps) => {
           <Wrap>
             {pokemon.abilities.map((item) => (
               <Text
-                key={`ability${item.ability.id}`}
+                key={`ability${item.ability.name}`}
                 css={css`
                   border-radius: 16px;
                   padding: 4px 16px 4px 16px;
@@ -330,7 +330,7 @@ const PokemonDetail = ({ name }: IPokemonDetailProps) => {
           <Wrap>
             {pokemon.moves.map((item) => (
               <Text
-                key={`moves${item.move.id}`}
+                key={`moves${item.move.name}`}
                 css={css`
                   border-radius: 16px;
                   padding: 4px 16px 4px 16px;
