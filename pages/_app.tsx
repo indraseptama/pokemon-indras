@@ -4,6 +4,7 @@ import NavigationBar from "../components/NavigationBar";
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import { PokemonProvider } from "../context/PokemonContext";
 import App, { AppContext, AppProps } from "next/app";
+import Head from "next/head";
 function MyApp({ Component, pageProps }: AppProps) {
   const client = new ApolloClient({
     uri: "https://graphql-pokeapi.vercel.app/api/graphql",
@@ -13,6 +14,9 @@ function MyApp({ Component, pageProps }: AppProps) {
     <ApolloProvider client={client}>
       <PokemonProvider>
         <ChakraProvider>
+          <Head>
+            <title>Catch Pokemon Indras!</title>
+          </Head>
           <Component {...pageProps} />
           <NavigationBar {...pageProps} />
         </ChakraProvider>

@@ -11,8 +11,10 @@ class MyDocument extends Document {
       <Html>
         <Head>
           <link rel="manifest" href="/manifest.json" />
-          <link rel="apple-touch-icon" href="/icon.png" />
+          <link rel="apple-touch-icon" href="/pokemon-icon.png" />
+          <link rel="shortcut icon" href="/pokemon-icon.png" />
           <meta name="theme-color" content="#FFFFFF" />
+          <meta name="description" content="Description" />
         </Head>
         <body>
           <Main />

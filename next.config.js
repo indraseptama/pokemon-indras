@@ -11,4 +11,8 @@ module.exports = withPWA({
   images: {
     domains: ["raw.githubusercontent.com", "example2.com"],
   },
+  i18n: {
+    locales: ["en"],
+    defaultLocale: "en",
+  },
 });
