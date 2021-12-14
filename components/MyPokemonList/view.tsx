@@ -42,7 +42,8 @@ const dummy: Array<IPokemon> = [
 ];
 
 const MyPokemonList = () => {
-  const { myPokemons, removePokemon } = useContext(PokemonContext);
+  const { countPokemons, myPokemons, removePokemon } =
+    useContext(PokemonContext);
   const [pokemons, setPokemons] = useState<Array<IPokemon>>(myPokemons);
   const [selectedPokemon, setSelectedPokemon] = useState("");
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -99,6 +100,15 @@ const MyPokemonList = () => {
           </ModalFooter>
         </ModalContent>
       </Modal>
+      <Text
+        css={css`
+          font-size: 28px;
+          font-weight: 700;
+          margin-bottom: 16px;
+        `}
+      >
+        You have {countPokemons} {countPokemons > 1 ? "pokemons" : "pokemon"}
+      </Text>
       <SimpleGrid
         minChildWidth="88px"
         spacing="16px"

@@ -50,7 +50,23 @@ const PokemonList = () => {
         }
       `}
     >
-      <Text>You have {countPokemons} pokemon</Text>
+      <Text
+        css={css`
+          font-size: 28px;
+          font-weight: 700;
+        `}
+      >
+        Catch the pokemon!
+      </Text>
+      <Text
+        css={css`
+          font-size: 20px;
+          font-weight: 600;
+          margin-bottom: 16px;
+        `}
+      >
+        You have {countPokemons} {countPokemons > 1 ? "pokemons" : "pokemon"}
+      </Text>
       <SimpleGrid
         minChildWidth={{ base: "88px", sm: "120px", md: "150px" }}
         spacing="16px"
