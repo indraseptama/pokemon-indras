@@ -245,6 +245,7 @@ const PokemonDetail = ({ name }: IPokemonDetailProps) => {
                 {item.base_stat}
               </Text>
               <Progress
+                aria-label="progress bar skill"
                 flex={1}
                 ml="16px"
                 height="4px"
