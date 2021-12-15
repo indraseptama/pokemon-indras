@@ -1,5 +1,5 @@
 [![Collect Coverage](https://github.com/indraseptama/pokemon-indras/actions/workflows/collect-coverage.yml/badge.svg)](https://github.com/indraseptama/pokemon-indras/actions/workflows/collect-coverage.yml)
-![Coverage Badge](https://img.shields.io/endpoint?url=https://gist.github.com/indraseptama/cd575e1494a96b83151bb73aafff5ec2#file-pokemon-indras__heads_main-json&maxAge=300)
+![Coverage Badge](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/indraseptama/cd575e1494a96b83151bb73aafff5ec2/raw/87d1d497b66c40f249ac53e02ff23f3fa593219d/pokemon-indras__heads_main.json&maxAge=300)
 
 # [Pokemon Indras](https://pokemon-indras.vercel.app/)
 
