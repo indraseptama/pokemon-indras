@@ -1,3 +1,6 @@
+[![Collect Coverage](https://github.com/indraseptama/pokemon-indras/actions/workflows/collect-coverage.yml/badge.svg)](https://github.com/indraseptama/pokemon-indras/actions/workflows/collect-coverage.yml)
+![Coverage Badge](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/indraseptama/cd575e1494a96b83151bb73aafff5ec2/raw/dd3914bf59daa174f2e845fe8039cee2805670cc/pokemon-indras__heads_main.json&maxAge=300)
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
