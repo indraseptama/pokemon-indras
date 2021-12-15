@@ -15,7 +15,7 @@ import { GET_POKEMONS } from "../../graphql/pokemon-query";
 import { PokemonContext } from "../../context/PokemonContext";
 
 const PokemonList = () => {
-  const limit = 24;
+  const limit = 12;
   const { countPokemons } = useContext(PokemonContext);
   const [pokemons, setPokemons] = useState<Array<IPokemonItem>>([]);
   const [skip, setSkip] = useState(0);

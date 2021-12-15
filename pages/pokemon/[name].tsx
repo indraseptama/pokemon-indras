@@ -1,6 +1,6 @@
 import { Box } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-import PokemonDetail from "../../components/PokemonDetail/view";
+import PokemonDetail from "../../components/PokemonDetail";
 
 const PokemonDetailPage = () => {
   const router = useRouter();

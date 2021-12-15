@@ -11,7 +11,7 @@ import { css } from "@emotion/react";
 import Image from "next/image";
 import { GET_POKEMON_DETAIL } from "../../graphql/pokemon-query";
 import { useContext, useEffect, useState } from "react";
-import ButtonCatchPokemeon from "../ButtonCatchPokemon/view";
+import ButtonCatchPokemeon from "../ButtonCatchPokemon";
 import ModalCatchPokemeon from "../ModalCatchPokemon/view";
 import { IPokemon } from "../../interface/IPokemon";
 import { useQuery } from "@apollo/client";
