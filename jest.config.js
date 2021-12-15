@@ -1,10 +1,10 @@
 // jest.config.js
 module.exports = {
   collectCoverageFrom: [
-    "src/**/*.{js,jsx,ts,tsx}",
-    "!src/**/index.tsx",
-    "!src/**/_app.tsx",
-    "!src/**/_document.tsx",
+    "**/*.{js,jsx,ts,tsx}",
+    "!**/index.tsx",
+    "!**/_app.tsx",
+    "!**/_document.tsx",
     "!<rootDir>/node_modules/",
   ],
   moduleDirectories: ["node_modules", "src"],
