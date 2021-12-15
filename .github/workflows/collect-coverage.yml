@@ -44,7 +44,7 @@ jobs:
         with:
           auth: ${{ secrets.GIST_SECRET }}
           gistID: 9d1aa20af3a8590a971863ddfbcfa388
-          filename: revamp-web-fe__${{ env.BRANCH }}.json
+          filename: pokemon-indras__${{ env.BRANCH }}.json
           label: Test Coverage (Branch)
           message: ${{ env.COVERAGE }}
           color: blue
