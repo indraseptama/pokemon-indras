@@ -404,7 +404,7 @@ export const dataDummyPokemon: IPokemon = {
   ],
 };
 
-const dataDummyList: Array<IPokemonItem> = [
+export const dataDummyList: Array<IPokemonItem> = [
   {
     name: "bulbasaur",
     image:
