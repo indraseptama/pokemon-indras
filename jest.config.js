@@ -11,6 +11,8 @@ module.exports = {
     "!<rootDir>/coverage/**",
     "!<rootDir>/interface/**",
     "!<rootDir>/public/**",
+    "!<rootDir>/pages/**",
+    "!<rootDir>/next-env.d.ts",
   ],
   moduleDirectories: ["node_modules", "src"],
   setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
