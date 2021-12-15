@@ -17,29 +17,6 @@ import { useContext, useEffect, useState } from "react";
 import { PokemonContext } from "../../context/PokemonContext";
 import { IPokemon } from "../../interface/IPokemon";
 import MyPokemonListItem from "../MyPokemonListItem/view";
-const dummy: Array<IPokemon> = [
-  {
-    nickname: "Damar",
-    sprites: {
-      front_default:
-        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png",
-    },
-  },
-  {
-    nickname: "Damar",
-    sprites: {
-      front_default:
-        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png",
-    },
-  },
-  {
-    nickname: "Damar",
-    sprites: {
-      front_default:
-        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png",
-    },
-  },
-];
 
 const MyPokemonList = () => {
   const { countPokemons, myPokemons, removePokemon } =
