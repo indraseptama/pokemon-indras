@@ -1,34 +1,41 @@
 [![Collect Coverage](https://github.com/indraseptama/pokemon-indras/actions/workflows/collect-coverage.yml/badge.svg)](https://github.com/indraseptama/pokemon-indras/actions/workflows/collect-coverage.yml)
 ![Coverage Badge](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/indraseptama/cd575e1494a96b83151bb73aafff5ec2/raw/dd3914bf59daa174f2e845fe8039cee2805670cc/pokemon-indras__heads_main.json&maxAge=300)
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# [Pokemon Indras](https://pokemon-indras.vercel.app/)
+
+## This project uses:
+
+- [NextJS](https://nextjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Chakra-ui](https://chakra-ui.com/)
+- [CSS-in-JS](https://emotion.sh/docs/introduction)
+- [PWA](https://web.dev/progressive-web-apps/)
+- [Jest](https://jestjs.io/)
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
+- [Apolo GraphQl](https://www.apollographql.com/blog/apollo-client/next-js/next-js-getting-started/)
 
 ## Getting Started
 
-First, run the development server:
+To start this project, clone:
 
-```bash
+```sh
+git clone https://github.com/indraseptama/pokemon-indras.git
+```
+
+Install dependencies (use npm):
+
+```sh
+npm install
+```
+
+## Run Project
+
+```sh
+# Development
 npm run dev
-# or
-yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
 ## Deploy on Vercel
 
