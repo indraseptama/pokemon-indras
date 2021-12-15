@@ -402,3 +402,5 @@ export const dataDummyPokemon: IPokemon = {
     },
   ],
 };
+
+const dataDummyList = [];
