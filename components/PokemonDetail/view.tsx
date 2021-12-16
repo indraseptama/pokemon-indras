@@ -108,7 +108,7 @@ const PokemonDetail = ({ name }: IPokemonDetailProps) => {
         @media (min-width: 960px) {
           flex-direction: row;
           margin-top: 100px;
-          margin-bottom: 0px;
+          margin-bottom: 100px;
           background-color: transparent;
         }
       `}
