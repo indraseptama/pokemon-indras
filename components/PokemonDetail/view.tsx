@@ -103,7 +103,7 @@ const PokemonDetail = ({ name }: IPokemonDetailProps) => {
         display: flex;
         flex-direction: column;
         position: relative;
-        margin-bottom: 100px;
+        margin-bottom: 180px;
         background-color: ${COLOR_TYPES[pokemon.types[0].type.name].background};
         @media (min-width: 960px) {
           flex-direction: row;
