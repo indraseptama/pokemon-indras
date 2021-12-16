@@ -3,6 +3,7 @@ import {
   Button,
   FormControl,
   FormLabel,
+  Icon,
   Input,
   Modal,
   ModalBody,
@@ -15,7 +16,7 @@ import { css } from "@emotion/react";
 import Image from "next/image";
 import { useState } from "react";
 import { IPokemon } from "../../interface/IPokemon";
-
+import { ImSad2 } from "react-icons/im";
 const ModalCatchPokemeon = ({
   isOpen,
   onCatchModalClose,
@@ -56,13 +57,7 @@ const ModalCatchPokemeon = ({
               position: relative;
             `}
           >
-            <Image
-              alt="Sad Image"
-              src="/sad.png"
-              layout="responsive"
-              height={1}
-              width={1}
-            />
+            <Icon as={ImSad2} width={"100%"} height={"auto"} color={"gray"} />
           </Box>
         )}
         {isCatchSuccess && (
