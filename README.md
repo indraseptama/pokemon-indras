@@ -8,7 +8,7 @@
 - [NextJS](https://nextjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Chakra-ui](https://chakra-ui.com/)
-- [CSS-in-JS](https://emotion.sh/docs/introduction)
+- [CSS-in-JS using Emption](https://emotion.sh/docs/introduction)
 - [PWA](https://web.dev/progressive-web-apps/)
 - [Jest](https://jestjs.io/)
 - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
