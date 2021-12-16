@@ -5,7 +5,7 @@ jest.mock("next/router", () => ({
   useRouter() {
     return {
       route: "/",
-      pathname: "/",
+      pathname: "/captured",
       query: "",
       asPath: "",
       push: jest.fn(),
@@ -19,7 +19,7 @@ jest.mock("next/router", () => ({
   },
 }));
 
-it("renders without error", async () => {
+it("renders without captured", async () => {
   const { getByText } = render(<NavigationBar />);
   expect(getByText("Captured")).toBeInTheDocument();
 });

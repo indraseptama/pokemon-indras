@@ -65,7 +65,7 @@ it("renders loading", () => {
 
 it("renders modal pop up", async () => {
   const addPokemon = jest.fn();
-  const { getByText } = render(
+  const { getByText, getByRole } = render(
     <PokemonContext.Provider value={addPokemon}>
       <MockedProvider mocks={mocks} addTypename={false}>
         <PokemonDetail name={"ivysaur"} />
@@ -76,7 +76,7 @@ it("renders modal pop up", async () => {
   const button = getByText("Catch!");
   fireEvent.click(button);
   await waitFor(() => screen.getAllByRole("dialog"));
-  //expect(getByText("ivysaur")).toBeInTheDocument();
+  expect(getByRole("dialog"));
 });
 
 it("renders with error", async () => {

@@ -5,7 +5,7 @@ jest.mock("next/router", () => ({
   useRouter() {
     return {
       route: "/",
-      pathname: "/",
+      pathname: "/pokemon",
       query: "",
       asPath: "",
       push: jest.fn(),
