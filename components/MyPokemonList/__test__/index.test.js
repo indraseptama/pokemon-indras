@@ -2,7 +2,6 @@ import {
   render,
   waitFor,
   screen,
-  act,
   getAllByText,
   fireEvent,
 } from "@testing-library/react";

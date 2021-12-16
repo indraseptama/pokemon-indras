@@ -1,8 +1,6 @@
 import {
   Box,
   Button,
-  Icon,
-  Link,
   Modal,
   ModalBody,
   ModalContent,

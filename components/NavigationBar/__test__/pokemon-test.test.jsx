@@ -1,4 +1,4 @@
-import { render, waitFor, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import NavigationBar from "../view";
 import "@testing-library/jest-dom";
 jest.mock("next/router", () => ({

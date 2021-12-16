@@ -11,7 +11,7 @@ import { GET_POKEMONS } from "../../../graphql/pokemon-query";
 import { dataDummyList } from "../../../utils/dataDummy";
 import "@testing-library/jest-dom";
 import { PokemonContext } from "../../../context/PokemonContext";
-import { ChakraProvider, toast } from "@chakra-ui/react";
+import { ChakraProvider } from "@chakra-ui/react";
 const mocks = [
   {
     request: {
