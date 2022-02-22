@@ -42,7 +42,7 @@ it("renders without error", async () => {
   const { getByText } = render(
     <PokemonContext.Provider value={addPokemon}>
       <MockedProvider mocks={mocks} addTypename={false}>
-        <PokemonDetail name={"ivysaur"} />
+        <PokemonDetail name={"ivysaur"} pokemon={dataDummyPokemon} />
       </MockedProvider>
     </PokemonContext.Provider>
   );
@@ -50,25 +50,14 @@ it("renders without error", async () => {
   expect(getByText("ivysaur")).toBeInTheDocument();
 });
 
-it("renders loading", () => {
-  const addPokemon = jest.fn();
-  const { getByText } = render(
-    <PokemonContext.Provider value={addPokemon}>
-      <MockedProvider mocks={mocks} addTypename={false}>
-        <PokemonDetail name={"ivysaur"} />
-      </MockedProvider>
-    </PokemonContext.Provider>
-  );
 
-  expect(getByText("Loading...")).toBeInTheDocument();
-});
 
 it("renders modal pop up", async () => {
   const addPokemon = jest.fn();
   const { getByText, getByRole } = render(
     <PokemonContext.Provider value={addPokemon}>
       <MockedProvider mocks={mocks} addTypename={false}>
-        <PokemonDetail name={"ivysaur"} />
+        <PokemonDetail name={"ivysaur"} pokemon={dataDummyPokemon}/>
       </MockedProvider>
     </PokemonContext.Provider>
   );
