@@ -1,18 +1,12 @@
-import { Box, Link, Text } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 import { css } from "@emotion/react";
 import Image from "next/image";
+import Link from "next/link";
 import { IPokemonItem } from "../../interface/IPokemonItem";
 
 const PokemonListItem = ({ name, image }: IPokemonItem) => {
   return (
-    <Link
-      css={css`
-        &:hover {
-          text-decoration: none;
-        }
-      `}
-      href={`/pokemon/${name}`}
-    >
+    <Link href={`/pokemon/${name}`}>
       <Box
         css={css`
           position: relative;

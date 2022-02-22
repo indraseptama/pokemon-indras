@@ -1,6 +1,7 @@
-import { Box, Button, Icon, Link, Text } from "@chakra-ui/react";
+import { Box, Button, Icon, Text } from "@chakra-ui/react";
 import { css } from "@emotion/react";
 import Image from "next/image";
+import Link from "next/link";
 import { SetStateAction } from "react";
 import { GiWaterRecycling } from "react-icons/gi";
 import { IPokemon } from "../../interface/IPokemon";
@@ -28,15 +29,7 @@ const MyPokemonListItem = ({
         cursor: pointer;
       `}
     >
-      <Link
-        css={css`
-          width: 100%;
-          &:hover {
-            text-decoration: none;
-          }
-        `}
-        href={`/pokemon/${pokemon.name}`}
-      >
+      <Link href={`/pokemon/${pokemon.name}`}>
         <Box
           css={css`
             display: flex;
@@ -44,6 +37,9 @@ const MyPokemonListItem = ({
             position: relative;
             align-items: center;
             width: 100%;
+            &:hover {
+              text-decoration: none;
+            }
           `}
         >
           <Box

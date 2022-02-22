@@ -1,9 +1,10 @@
-import { Box, Flex, Icon, Link, Text } from "@chakra-ui/react";
+import { Box, Flex, Icon, Text } from "@chakra-ui/react";
 import { css } from "@emotion/react";
 import { useRouter } from "next/router";
 import { MdOutlineExplore } from "react-icons/md";
 import { GiPokecog } from "react-icons/gi";
 import Image from "next/image";
+import Link from "next/link";
 const NavigationBar = () => {
   let explore = "#929292";
   let captured = "#929292";
@@ -42,43 +43,44 @@ const NavigationBar = () => {
         }
       `}
     >
-      <Link
-        href="/"
-        css={css`
-          display: none;
-          position: relative;
-          margin-right: auto;
-          margin-left: 64px;
-          @media (min-width: 960px) {
-            display: block;
-          }
-        `}
-      >
-        <Image
-          alt="Pokemon Logo"
-          src={"/pokemon-logo.png"}
-          height={"50px"}
-          width={"100px"}
-          objectFit="contain"
-        />
+      <Link href="/">
+        <Box
+          css={css`
+            display: none;
+            position: relative;
+            margin-right: auto;
+            margin-left: 64px;
+            @media (min-width: 960px) {
+              display: block;
+            }
+          `}
+        >
+          <Image
+            alt="Pokemon Logo"
+            src={"/pokemon-logo.png"}
+            height={"50px"}
+            width={"100px"}
+            objectFit="contain"
+          />
+        </Box>
       </Link>
-      <Link
-        css={css`
-          text-align: center;
-          flex: 1;
-          padding: 0 8px;
-          color: ${explore};
-          &:hover {
-            text-decoration: none;
-          }
-          @media (min-width: 960px) {
-            flex: none;
-            margin-right: 64px;
-          }
-        `}
-        href="/"
-      >
-        <Box>
+      <Link href="/">
+        <Box
+          cursor={"pointer"}
+          css={css`
+            text-align: center;
+            flex: 1;
+            padding: 0 8px;
+            color: ${explore};
+            &:hover {
+              text-decoration: none;
+            }
+            @media (min-width: 960px) {
+              flex: none;
+              margin-right: 64px;
+            }
+          `}
+        >
           <Icon as={MdOutlineExplore} w="20px" h="20px" />
           <Text
             css={css`
@@ -91,23 +93,23 @@ const NavigationBar = () => {
           </Text>
         </Box>
       </Link>
-      <Link
-        css={css`
-          text-align: center;
-          flex: 1;
-          padding: 0 8px;
-          &:hover {
-            text-decoration: none;
-          }
-          color: ${captured};
-          @media (min-width: 960px) {
-            flex: none;
-            margin-right: 64px;
-          }
-        `}
-        href="/captured"
-      >
-        <Box>
+      <Link href="/captured">
+        <Box
+          cursor={"pointer"}
+          css={css`
+            text-align: center;
+            flex: 1;
+            padding: 0 8px;
+            &:hover {
+              text-decoration: none;
+            }
+            color: ${captured};
+            @media (min-width: 960px) {
+              flex: none;
+              margin-right: 64px;
+            }
+          `}
+        >
           <Icon as={GiPokecog} w="20px" h="20px" />
           <Text
             css={css`
