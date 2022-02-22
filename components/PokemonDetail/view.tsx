@@ -9,28 +9,23 @@ import {
 } from "@chakra-ui/react";
 import { css } from "@emotion/react";
 import Image from "next/image";
-import { GET_POKEMON_DETAIL } from "../../graphql/pokemon-query";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import ButtonCatchPokemeon from "../ButtonCatchPokemon";
 import ModalCatchPokemeon from "../ModalCatchPokemon/view";
 import { IPokemon } from "../../interface/IPokemon";
-import { useQuery } from "@apollo/client";
 import { PokemonContext } from "../../context/PokemonContext";
 import { COLOR_TYPES } from "../../utils/colorTypes";
 
 interface IPokemonDetailProps {
   name: string;
+  pokemon: IPokemon;
 }
 
-const PokemonDetail = ({ name }: IPokemonDetailProps) => {
-  const [pokemon, setPokemon] = useState<IPokemon>();
+const PokemonDetail = ({ pokemon }: IPokemonDetailProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isCatchSuccess, setIsCatchSucces] = useState(false);
   const toast = useToast();
   const { addPokemon } = useContext(PokemonContext);
-  const { data, loading, error } = useQuery(GET_POKEMON_DETAIL, {
-    variables: { name: name },
-  });
 
   const centerScreen = css`
     display: flex;
@@ -39,12 +34,6 @@ const PokemonDetail = ({ name }: IPokemonDetailProps) => {
     text-align: center;
     min-height: 100vh;
   `;
-
-  useEffect(() => {
-    if (data && data.pokemon) {
-      setPokemon(data.pokemon);
-    }
-  }, [data]);
 
   const getColor = (baseStat: number) => {
     if (baseStat >= 0 && baseStat <= 50) return "red";
@@ -85,15 +74,7 @@ const PokemonDetail = ({ name }: IPokemonDetailProps) => {
     }
   };
 
-  if (loading || pokemon === undefined) {
-    return (
-      <Box css={centerScreen}>
-        <Spinner />
-      </Box>
-    );
-  }
-
-  if (error || pokemon.name === null) {
+  if (pokemon === undefined) {
     return <Box css={centerScreen}>Pokemon not found :(</Box>;
   }
 
